@@ -1,11 +1,15 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
+page = urlopen('http://www.nepalstock.com/main/todays_price')
+pageSoup = BeautifulSoup(page, 'lxml')
+pageDiv = pageSoup.find('div', class_= 'pager')
 
-pages = [1]
+totalPages = int(pageDiv.get_text()[-1])
+
 finalList = []
 innerList = []
-for page in pages:
+for page in range(1,totalPages+1):
     link = urlopen("http://www.nepalstock.com/main/todays_price/index/{}/".format(page))
     soup = BeautifulSoup(link, 'lxml')
     table = soup.find('table', class_ = "table table-condensed table-hover")
@@ -20,9 +24,12 @@ for page in pages:
                 for finalData in row.find_all('td'):
                     innerList.append(finalData.get_text())
     finalList.append(innerList)
-print(finalList)
-                #finalList.append(innerList)
-                    
+
+result = finalList[0]
+
+print(result)
+            
+                 
                 
                 
     
