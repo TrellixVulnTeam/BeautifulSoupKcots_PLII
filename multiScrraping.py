@@ -8,7 +8,7 @@ pageDiv = pageSoup.find('div', class_= 'pager')
 totalPages = int(pageDiv.get_text()[-1])
 
 finalList = []
-innerList = []
+innerTuple = ()
 for page in range(1,totalPages+1):
     link = urlopen("http://www.nepalstock.com/main/todays_price/index/{}/".format(page))
     soup = BeautifulSoup(link, 'lxml')
@@ -22,14 +22,12 @@ for page in range(1,totalPages+1):
                 #print(row.get_text(),end="    ")      
                 #print (table.find_all('tr')[temp].get_text()) 
                 for finalData in row.find_all('td'):
-                    innerList.append(finalData.get_text())
-    finalList.append(innerList)
-
-result = finalList[0]
-
-print(result)
-            
-                 
+                    temp1 = finalData.get_text()
+                    innerTuple = innerTuple + (temp1,)
+                finalList.append(innerTuple)
+                innerTuple = ()
+result = finalList
+print(result[2])              
                 
                 
     
