@@ -1,0 +1,28 @@
+
+        """for j in i:
+            print(j)
+            if (j[0]==d[1]):
+                finalTuple = ()
+                typeOfcompany = j[3]
+                currentDate = data[1]
+                nameOfCompany = data[2]
+                noOfShare = int(j[i])
+                purchasedValuePerShare = int(j[2])
+                totalPurchasedAmount = purchasedValuePerShare * noOfShare
+                currentValuePerShare = int(data[6])
+                totalCurrentAmount = currentValuePerShare * noOfShare
+                profitPerShare = currentValuePerShare - profitPerShare
+                totalProfit = profitPerShare*noOfShare
+                profitPercent = (profitPerShare/purchasedValue)*100
+                finalTuple = finalTuple + (nameOfCompany,typeOfcompany,currentDate,noOfShare,currentValuePerShare,totalCurrentAmount,purchasedValuePerShare,totalProfit,profitPercent,)
+                break
+        finalList.append(finalTuple)
+        break"""
+        
+        
+        
+        for i in range(totalCompany):
+            innerTupleForExcel = ()
+        tableData = finalList[i]
+        innerTupleForExcel = innerTupleForExcel + (tableData[1],tableData[2],tableData[6],)
+        outerListForExcel.append(innerTupleForExcel)
